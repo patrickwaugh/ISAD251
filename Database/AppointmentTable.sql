@@ -1,5 +1,5 @@
 CREATE TABLE [dbo].[Appointment] (
-    ApptID INT NOT NULL,
+    ApptID INT IDENTITY(1,1),
     ApptTitle VARCHAR(20) NOT NULL,
     ApptDate DATETIME NOT NULL,
     ApptLocation VARCHAR(20),

@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ISAD251_Referral.Models;
 
 namespace ISAD251_Referral.Controllers
 {
-    public class AppointmentsController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AppointmentsController : ControllerBase
     {
         private readonly ISAD251_PWaughContext _context;
 
@@ -18,137 +20,99 @@ namespace ISAD251_Referral.Controllers
             _context = context;
         }
 
-        // GET: Appointments
-        public async Task<IActionResult> Index()
+        // GET: api/Appointments
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointment()
         {
-            var iSAD251_PWaughContext = _context.Appointment.Include(a => a.User);
-            return View(await iSAD251_PWaughContext.ToListAsync());
+            return await _context.Appointment.ToListAsync();
         }
 
-        // GET: Appointments/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: api/Appointments/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Appointment>> GetAppointment(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var appointment = await _context.Appointment
-                .Include(a => a.User)
-                .FirstOrDefaultAsync(m => m.ApptId == id);
-            if (appointment == null)
-            {
-                return NotFound();
-            }
-
-            return View(appointment);
-        }
-
-        // GET: Appointments/Create
-        public IActionResult Create()
-        {
-            ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserName");
-            return View();
-        }
-
-        // POST: Appointments/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ApptId,ApptTitle,ApptDate,ApptLocation,ApptDuration,ApptNotes,UserId")] Appointment appointment)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(appointment);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserName", appointment.UserId);
-            return View(appointment);
-        }
-
-        // GET: Appointments/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var appointment = await _context.Appointment.FindAsync(id);
+
             if (appointment == null)
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserName", appointment.UserId);
-            return View(appointment);
+
+            return appointment;
         }
 
-        // POST: Appointments/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ApptId,ApptTitle,ApptDate,ApptLocation,ApptDuration,ApptNotes,UserId")] Appointment appointment)
+        // PUT: api/Appointments/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAppointment(int id, Appointment appointment)
         {
             if (id != appointment.ApptId)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            if (ModelState.IsValid)
+            _context.Entry(appointment).State = EntityState.Modified;
+
+            try
             {
-                try
-                {
-                    _context.Update(appointment);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AppointmentExists(appointment.ApptId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                await _context.SaveChangesAsync();
             }
-            ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserName", appointment.UserId);
-            return View(appointment);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!AppointmentExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        // GET: Appointments/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // POST: api/Appointments
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPost]
+        public async Task<ActionResult<Appointment>> PostAppointment(Appointment appointment)
         {
-            if (id == null)
+            _context.Appointment.Add(appointment);
+            try
             {
-                return NotFound();
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (AppointmentExists(appointment.ApptId))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
-            var appointment = await _context.Appointment
-                .Include(a => a.User)
-                .FirstOrDefaultAsync(m => m.ApptId == id);
+            return CreatedAtAction("GetAppointment", new { id = appointment.ApptId }, appointment);
+        }
+
+        // DELETE: api/Appointments/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Appointment>> DeleteAppointment(int id)
+        {
+            var appointment = await _context.Appointment.FindAsync(id);
             if (appointment == null)
             {
                 return NotFound();
             }
 
-            return View(appointment);
-        }
-
-        // POST: Appointments/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var appointment = await _context.Appointment.FindAsync(id);
             _context.Appointment.Remove(appointment);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return appointment;
         }
 
         private bool AppointmentExists(int id)

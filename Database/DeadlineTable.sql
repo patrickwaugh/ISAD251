@@ -1,6 +1,6 @@
 
 CREATE TABLE [dbo].[Deadline] (
-    DeadlineID INT NOT NULL,
+    DeadlineID INT IDENTITY(1,1),
     DeadlineTitle VARCHAR(20) NOT NULL,
     DeadlineDate DATETIME NOT NULL,
     DeadlineNotes VARCHAR(120),

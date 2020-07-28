@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ISAD251_Referral.Models;
 
 namespace ISAD251_Referral.Controllers
 {
-    public class DeadlinesController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class DeadlinesController : ControllerBase
     {
         private readonly ISAD251_PWaughContext _context;
 
@@ -18,137 +20,99 @@ namespace ISAD251_Referral.Controllers
             _context = context;
         }
 
-        // GET: Deadlines
-        public async Task<IActionResult> Index()
+        // GET: api/Deadlines
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Deadline>>> GetDeadline()
         {
-            var iSAD251_PWaughContext = _context.Deadline.Include(d => d.User);
-            return View(await iSAD251_PWaughContext.ToListAsync());
+            return await _context.Deadline.ToListAsync();
         }
 
-        // GET: Deadlines/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: api/Deadlines/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Deadline>> GetDeadline(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var deadline = await _context.Deadline
-                .Include(d => d.User)
-                .FirstOrDefaultAsync(m => m.DeadlineId == id);
-            if (deadline == null)
-            {
-                return NotFound();
-            }
-
-            return View(deadline);
-        }
-
-        // GET: Deadlines/Create
-        public IActionResult Create()
-        {
-            ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserName");
-            return View();
-        }
-
-        // POST: Deadlines/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DeadlineId,DeadlineTitle,DeadlineDate,DeadlineNotes,IsCompleted,UserId")] Deadline deadline)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(deadline);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserName", deadline.UserId);
-            return View(deadline);
-        }
-
-        // GET: Deadlines/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var deadline = await _context.Deadline.FindAsync(id);
+
             if (deadline == null)
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserName", deadline.UserId);
-            return View(deadline);
+
+            return deadline;
         }
 
-        // POST: Deadlines/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DeadlineId,DeadlineTitle,DeadlineDate,DeadlineNotes,IsCompleted,UserId")] Deadline deadline)
+        // PUT: api/Deadlines/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutDeadline(int id, Deadline deadline)
         {
             if (id != deadline.DeadlineId)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            if (ModelState.IsValid)
+            _context.Entry(deadline).State = EntityState.Modified;
+
+            try
             {
-                try
-                {
-                    _context.Update(deadline);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!DeadlineExists(deadline.DeadlineId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                await _context.SaveChangesAsync();
             }
-            ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserName", deadline.UserId);
-            return View(deadline);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!DeadlineExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        // GET: Deadlines/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // POST: api/Deadlines
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPost]
+        public async Task<ActionResult<Deadline>> PostDeadline(Deadline deadline)
         {
-            if (id == null)
+            _context.Deadline.Add(deadline);
+            try
             {
-                return NotFound();
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (DeadlineExists(deadline.DeadlineId))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
-            var deadline = await _context.Deadline
-                .Include(d => d.User)
-                .FirstOrDefaultAsync(m => m.DeadlineId == id);
+            return CreatedAtAction("GetDeadline", new { id = deadline.DeadlineId }, deadline);
+        }
+
+        // DELETE: api/Deadlines/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Deadline>> DeleteDeadline(int id)
+        {
+            var deadline = await _context.Deadline.FindAsync(id);
             if (deadline == null)
             {
                 return NotFound();
             }
 
-            return View(deadline);
-        }
-
-        // POST: Deadlines/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var deadline = await _context.Deadline.FindAsync(id);
             _context.Deadline.Remove(deadline);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return deadline;
         }
 
         private bool DeadlineExists(int id)
