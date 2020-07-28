@@ -152,8 +152,6 @@ C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD25
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\ISAD251_Referral.csprojAssemblyReference.cache
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\bin\Debug\netcoreapp3.1\ISAD251_Referral.Views.dll
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\bin\Debug\netcoreapp3.1\ISAD251_Referral.Views.pdb
-C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\ISAD251_Referral.csproj.CoreCompileInputs.cache
-C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\ISAD251_Referral.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\ISAD251_Referral.RazorAssemblyInfo.cache
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\ISAD251_Referral.RazorAssemblyInfo.cs
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\ISAD251_Referral.TagHelpers.input.cache
@@ -177,3 +175,5 @@ C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD25
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\ISAD251_Referral.RazorTargetAssemblyInfo.cs
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\ISAD251_Referral.Views.pdb
+C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\ISAD251_Referral.csproj.CoreCompileInputs.cache
+C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\API\ISAD251\ISAD251_Referral\obj\Debug\netcoreapp3.1\ISAD251_Referral.MvcApplicationPartsAssemblyInfo.cache

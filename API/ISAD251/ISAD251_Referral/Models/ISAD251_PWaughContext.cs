@@ -37,7 +37,7 @@ namespace ISAD251_Referral.Models
 
                 entity.Property(e => e.ApptId)
                     .HasColumnName("ApptID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.ApptDate).HasColumnType("datetime");
 
@@ -67,7 +67,7 @@ namespace ISAD251_Referral.Models
             {
                 entity.Property(e => e.DeadlineId)
                     .HasColumnName("DeadlineID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.DeadlineDate).HasColumnType("datetime");
 
@@ -93,7 +93,7 @@ namespace ISAD251_Referral.Models
             {
                 entity.Property(e => e.UserId)
                     .HasColumnName("UserID")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.UserName)
                     .IsRequired()

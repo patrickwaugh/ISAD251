@@ -25,6 +25,7 @@
       "ISAD251_Referral/1.0.0": {
         "dependencies": {
           "EntityFramework": "6.4.4",
+          "Microsoft.AspNetCore.Razor": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.6",
           "Microsoft.EntityFrameworkCore.Sqlite": "3.1.6",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.6",
