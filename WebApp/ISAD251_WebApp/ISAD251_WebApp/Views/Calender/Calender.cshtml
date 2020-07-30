@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Calender";
+}
+
+<div style="height:750px;">
+
+</div>
+<div id="calender"></div>
+
+<link href='fullcalendar/main.css' rel='stylesheet' />
+
+@section Scripts{
+
+    <script src='fullcalendar/main.js'></script>
+
+    <script>
+        $(document).ready(function () {
+
+            function GenerateCalender(events) {
+                $('#calender').fullCalender('destroy');
+                $('#calender').fullCalender({
+                    contentHeight: 400,
+                    defaultDate: new Date(),
+                    timeFormat: 'h(:mm)a',
+                    header: {
+                        left: 'prev, next today',
+                        center: 'title',
+                        right: 'month,basicWeek,basicDay,agenda'
+                    }
+                })
+            }
+           
+        })
+    </script>
+
+
+
+
+
+}
+
+
+
+
+<!-- background colour + large text-->
+<div class="w3-sand w3-greyscale w3-large">
+    <h1>Welcome</h1>
+</div>
