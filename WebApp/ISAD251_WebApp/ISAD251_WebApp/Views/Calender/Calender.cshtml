@@ -3,47 +3,58 @@
     ViewData["Title"] = "Calender";
 }
 
-<div style="height:750px;">
+<style>
+    .sidenav {
+        width: 130px;
+        position: fixed;
+        z-index: 1;
+        top: 100px;
+        left: 10px;
+        background: #000000;
+        overflow-x: hidden;
+        padding: 8px 0;
+    }
 
-</div>
-<div id="calender"></div>
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #ffffff;
+        display: block;
+    }
 
-<link href='fullcalendar/main.css' rel='stylesheet' />
-
-@section Scripts{
-
-    <script src='fullcalendar/main.js'></script>
-
-    <script>
-        $(document).ready(function () {
-
-            function GenerateCalender(events) {
-                $('#calender').fullCalender('destroy');
-                $('#calender').fullCalender({
-                    contentHeight: 400,
-                    defaultDate: new Date(),
-                    timeFormat: 'h(:mm)a',
-                    header: {
-                        left: 'prev, next today',
-                        center: 'title',
-                        right: 'month,basicWeek,basicDay,agenda'
-                    }
-                })
-            }
-           
-        })
-    </script>
-
-
-
-
-
+.sidenav a:hover {
+  color: #064579;
 }
 
+.main {
+  margin-left: 140px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
 
+ </style>
 
-
-<!-- background colour + large text-->
-<div class="w3-sand w3-greyscale w3-large">
-    <h1>Welcome</h1>
+<!-- SideNav -->
+<div class="sidenav">
+    <a class="w3-button w3-block w3-black" style="font-size:15px"asp-area="" asp-controller="Appointments" asp-action="Index">Appointments</a>
+    <a class="w3-button w3-block w3-black" style="font-size:15px"asp-area="" asp-controller="Deadlines" asp-action="Index"> Deadlines</a>
 </div>
+
+<!-- Page content -->
+<div class="main">
+    ...
+</div>
+
+
+
+
+<script>
+
+
+
+
+
+
+
+</script>

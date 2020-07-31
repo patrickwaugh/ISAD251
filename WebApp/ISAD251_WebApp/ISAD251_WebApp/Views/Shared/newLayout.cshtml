@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/css/w3.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family-Inconsolata" />
+
+
     <style>
         body, html {
             height: 100%;
             font-family: "Inconsolata", sans-serif;
+            background-color: #404040;
         }
 
         .bgimg {
@@ -31,10 +34,10 @@
     <div class=" w3-top">
         <div class="w3-row w3-padding w3-black">
             <div class="w3-col s4">
-                <a class="w3-button w3-block w3-black" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
+                <a class="w3-button w3-block w3-black" asp-area="" asp-controller="Home" asp-action="Index"><span class="w3-text-white">Home</span></a>
             </div>
             <div class="w3-col s4">
-                <a class="w3-button w3-block w3-black" asp-area="" asp-controller="Calender" asp-action="Calender" >CALENDER</a>
+                <a class="w3-button w3-block w3-black" asp-area="" asp-controller="Calender" asp-action="Calender"><span class="w3-text-white">View Calender</span></a>
             </div>
             <div style="float:right">
                 <label for="user_select">Current user:</label>
@@ -53,7 +56,12 @@
         @RenderBody()
     </div>
 
-    @RenderSection("Scripts", false)
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/js/main.js"></script>
+
+
 </body>
 
 
