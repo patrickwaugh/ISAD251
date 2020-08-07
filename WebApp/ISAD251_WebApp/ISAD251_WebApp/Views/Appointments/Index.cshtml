@@ -4,63 +4,113 @@
     ViewData["Title"] = "Appointment";
     Layout = "newLayout";
 }
+<style>
+    .sidenav {
+        width: 130px;
+        position: fixed;
+        z-index: 1;
+        top: 100px;
+        left: 10px;
+        background: #000000;
+        overflow-x: hidden;
+        padding: 8px 0;
+    }
 
+        .sidenav a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #ffffff;
+            display: block;
+        }
+
+            .sidenav a:hover {
+                color: #064579;
+            }
+
+    .main {
+        margin-left: 140px; /* Same width as the sidebar + left position in px */
+        font-size: 28px; /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+</style>
+
+<!-- SideNav -->
+<div class="sidenav">
+    <a class="w3-button w3-block w3-black" style="font-size:15px">Appointments</a>
+    <a class="w3-button w3-block w3-black" style="font-size:15px" asp-area="" asp-controller="Deadlines" asp-action="Index"> Deadlines</a>
+</div>
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ApptTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApptDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApptLocation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApptDuration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApptNotes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApptTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApptDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApptLocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApptDuration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApptNotes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.UserName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ApptId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ApptId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ApptId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<body>
+    <script>
+    function displayData() {
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApptTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApptDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApptLocation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApptDuration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApptNotes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.UserId = selected_user.value)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApptTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApptDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApptLocation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApptDuration)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.UserName)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ApptId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.ApptId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.ApptId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+    }
+
+
+
+    </script>
+
+</body>
