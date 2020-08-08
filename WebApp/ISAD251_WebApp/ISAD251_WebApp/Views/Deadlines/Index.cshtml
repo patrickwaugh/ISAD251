@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "newLayout";
 }
 <style>
     .sidenav {
@@ -43,62 +44,71 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a style="padding-left:160px" asp-action="Create">Create New</a>
 </p>
 
-<script>
-    function displayData() {
-        <table class="table" style="padding-left:160px">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DeadlineTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeadlineDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeadlineNotes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsCompleted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            if (item.UserId = selected_user.value)
-            {
+    
+<body>
+    <div style="float:right">
+        <label for="user_select">Current user:</label>
+
+        <select name="user_select" id="user_select" onclick="">
+            <option value="1">Parent</option>
+            <option value="2">Child 1</option>
+            <option value="3">Child 2</option>
+            <option value="4">Child 3</option>
+        </select>
+    </div>
+
+    <table class="table" style="padding-left:160px">
+
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeadlineTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DeadlineDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsCompleted)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.UserName)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.DeadlineId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.DeadlineId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.DeadlineId">Delete</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeadlineTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeadlineDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeadlineNotes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsCompleted)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeadlineTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeadlineDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsCompleted)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.UserName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.DeadlineId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.DeadlineId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.DeadlineId">Delete</a>
+                    </td>
                 </tr>
+
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
 
-    }
-
-</script>
+</body>

@@ -19,9 +19,10 @@ namespace ISAD251_WebApp.Controllers
         }
 
         // GET: Appointments
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int selected_user)
         {
-            var iSAD251_PWaughContext = _context.Appointment.Include(a => a.User);
+            var iSAD251_PWaughContext = _context.Appointment.Include(a => a.User).Where(a => a.UserId.Equals(selected_user)); ;
+
             return View(await iSAD251_PWaughContext.ToListAsync());
         }
 

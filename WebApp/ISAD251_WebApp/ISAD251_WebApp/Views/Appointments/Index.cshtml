@@ -43,42 +43,48 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a style="padding-left:160px" asp-action="Create">Create New</a>
 </p>
 
 <body>
-    <script>
-    function displayData() {
-    
-    <table class="table">
+    <div style="float:right">
+        <label for="user_select">Current user:</label>
+
+        <select name="user_select" id="user_select_box" onclick="">
+            <option value="1" >Parent</option>
+            <option value="2">Child 1</option>
+            <option value="3">Child 2</option>
+            <option value="4">Child 3</option>
+        </select>
+        <a class="w3-button" asp-area="" asp-controller="Appointments" asp-action="Index" asp-route-id="1">Nam Jeff</a>
+    </div>
+
+    <table class="table" style="padding-left:160px"> 
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ApptTitle)
+                    Title
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ApptDate)
+                    Date
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ApptLocation)
+                    Location
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ApptDuration)
+                    Duration
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ApptNotes)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User)
+                    User
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
+
             @foreach (var item in Model)
             {
-                if (item.UserId = selected_user.value)
-                {
+               
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.ApptTitle)
@@ -101,16 +107,17 @@
                             <a asp-action="Delete" asp-route-id="@item.ApptId">Delete</a>
                         </td>
                     </tr>
-                }
+                
+
             }
         </tbody>
     </table>
 
+ 
 
-    }
+    
 
 
 
-    </script>
 
 </body>
