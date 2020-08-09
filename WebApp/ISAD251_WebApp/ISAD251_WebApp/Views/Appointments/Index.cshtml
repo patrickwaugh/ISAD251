@@ -4,14 +4,20 @@
     ViewData["Title"] = "Appointment";
     Layout = "newLayout";
 }
+    <head>
+        <script>
+            var actionUrl = '<%= Url.Action("Index", "Appointments", new { id = "PLACEHOLDER" } ) %>';
+        </script>
+        
+    </head>
 <style>
     .sidenav {
         width: 130px;
         position: fixed;
         z-index: 1;
-        top: 100px;
+        top: 150px;
         left: 10px;
-        background: #000000;
+        background: #2196F3;
         overflow-x: hidden;
         padding: 8px 0;
     }
@@ -25,7 +31,7 @@
         }
 
             .sidenav a:hover {
-                color: #064579;
+                color: #2196F3;
             }
 
     .main {
@@ -33,12 +39,13 @@
         font-size: 28px; /* Increased text to enable scrolling */
         padding: 0px 10px;
     }
+
 </style>
 
 <!-- SideNav -->
 <div class="sidenav">
-    <a class="w3-button w3-block w3-black" style="font-size:15px">Appointments</a>
-    <a class="w3-button w3-block w3-black" style="font-size:15px" asp-area="" asp-controller="Deadlines" asp-action="Index"> Deadlines</a>
+    <a class="w3-button w3-block w3-blue" style="font-size:15px">Appointments</a>
+    <a class="w3-button w3-block w3-blue" style="font-size:15px" asp-area="" asp-controller="Deadlines" asp-action="Index"> Deadlines</a>
 </div>
 <h1>Index</h1>
 
@@ -46,20 +53,22 @@
     <a style="padding-left:160px" asp-action="Create">Create New</a>
 </p>
 
+
 <body>
     <div style="float:right">
-        <label for="user_select">Current user:</label>
+        <label for="user_select">Current user:</label>  
 
         <select name="user_select" id="user_select_box" onclick="">
-            <option value="1" >Parent</option>
+            <option value="1">Parent</option>
             <option value="2">Child 1</option>
             <option value="3">Child 2</option>
             <option value="4">Child 3</option>
         </select>
-        <a class="w3-button" asp-area="" asp-controller="Appointments" asp-action="Index" asp-route-id="1">Nam Jeff</a>
+
+
     </div>
 
-    <table class="table" style="padding-left:160px"> 
+    <table class="table" style="padding-left:160px">
         <thead>
             <tr>
                 <th>
@@ -84,38 +93,48 @@
 
             @foreach (var item in Model)
             {
-               
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ApptTitle)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ApptDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ApptLocation)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ApptDuration)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.User.UserName)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.ApptId">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.ApptId">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.ApptId">Delete</a>
-                        </td>
-                    </tr>
-                
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApptTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApptDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApptLocation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApptDuration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.UserName)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ApptId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ApptId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ApptId">Delete</a>
+                    </td>
+                </tr>
+
 
             }
         </tbody>
     </table>
 
- 
+    <script type="text/javascript">
+        function getUser() {
+            selectElement = document.querySelector("#user_select_box");
+                    
+            user = selectElement.value;
 
-    
+            window.open(actionUrl.replace('PLACEHOLDER', user));
+
+        }
+    </script>
+
+
+
 
 
 

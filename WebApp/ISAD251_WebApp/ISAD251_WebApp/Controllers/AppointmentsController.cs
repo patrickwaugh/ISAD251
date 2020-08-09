@@ -18,12 +18,15 @@ namespace ISAD251_WebApp.Controllers
             _context = context;
         }
 
+       
         // GET: Appointments
-        public async Task<IActionResult> Index(int selected_user)
+        public async Task<IActionResult> Index(int id, bool is_parent)
         {
-            var iSAD251_PWaughContext = _context.Appointment.Include(a => a.User).Where(a => a.UserId.Equals(selected_user)); ;
 
-            return View(await iSAD251_PWaughContext.ToListAsync());
+        var iSAD251_PWaughContext = _context.Appointment.Include(a => a.User).Where(a => a.UserId == id).OrderBy(a => a.ApptDate);
+                
+        return View(await iSAD251_PWaughContext.ToListAsync());
+          
         }
 
         // GET: Appointments/Details/5

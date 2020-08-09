@@ -11,10 +11,10 @@
         body, html {
             height: 100%;
             font-family: "Inconsolata", sans-serif;
-            background-color: #404040;
+            background-color: #FFF;
         }
 
-        .bgimg {
+        .bgimg {    
             background-position: center;
             background-size: cover;
             width: 100%;
@@ -30,14 +30,15 @@
 </head>
 
 <body>
+    <h1 style="text-align:center">Time-Keeper</h1>
     <!-- links sit here-->
-    <div class=" w3-top">
-        <div class="w3-row w3-padding w3-black">
-            <div class="w3-col s4">
-                <a class="w3-button w3-block w3-black" asp-area="" asp-controller="Home" asp-action="Index"><span class="w3-text-white">Home</span></a>
+    <div class=" w3-top" style="top:70px">
+        <div class="w3-row w3-padding w3-blue">
+            <div class="w3-col s1">
+                <a class="w3-button w3-blue" asp-area="" asp-controller="Home" asp-action="Index"><span class="w3-text-white">Home</span></a>
             </div>
-            <div class="w3-col s4">
-                <a class="w3-button w3-block w3-black" asp-area="" asp-controller="Calender" asp-action="Calender"><span class="w3-text-white">View Calender</span></a>
+            <div class="w3-col s1">
+                <a class="w3-button w3-blue" asp-area="" asp-controller="Calender" asp-action="Calender"><span class="w3-text-white">View Calender</span></a>
             </div>
            
         </div>

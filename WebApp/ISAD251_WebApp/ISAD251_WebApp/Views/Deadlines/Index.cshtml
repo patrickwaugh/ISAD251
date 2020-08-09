@@ -9,9 +9,9 @@
         width: 130px;
         position: fixed;
         z-index: 1;
-        top: 100px;
+        top: 150px;
         left: 10px;
-        background: #000000;
+        background: #2196F3;
         overflow-x: hidden;
         padding: 8px 0;
     }
@@ -37,8 +37,8 @@
 
 <!-- SideNav -->
 <div class="sidenav">
-    <a class="w3-button w3-block w3-black" style="font-size:15px" asp-area="" asp-controller="Appointments" asp-action="Index">Appointments</a>
-    <a class="w3-button w3-block w3-black" style="font-size:15px"> Deadlines</a>
+    <a class="w3-button w3-block w3-blue" style="font-size:15px" asp-area="" asp-controller="Appointments" asp-action="Index">Appointments</a>
+    <a class="w3-button w3-block w3-blue" style="font-size:15px"> Deadlines</a>
 </div>
 
 <h1>Index</h1>
@@ -65,19 +65,16 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.DeadlineTitle)
+                    Title
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DeadlineDate)
+                    Date
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DeadlineNotes)
+                    Completed?
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.IsCompleted)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.User)
+                    User
                 </th>
                 <th></th>
             </tr>
