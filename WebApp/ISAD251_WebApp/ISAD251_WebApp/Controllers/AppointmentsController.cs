@@ -22,10 +22,19 @@ namespace ISAD251_WebApp.Controllers
         // GET: Appointments
         public async Task<IActionResult> Index(int id, bool is_parent)
         {
+            if (is_parent == true)
+            {
+                var iSAD251_PWaughContext = _context.Appointment.Include(a => a.User).OrderBy(a => a.ApptDate);
 
-        var iSAD251_PWaughContext = _context.Appointment.Include(a => a.User).Where(a => a.UserId == id).OrderBy(a => a.ApptDate);
-                
-        return View(await iSAD251_PWaughContext.ToListAsync());
+                return View(await iSAD251_PWaughContext.ToListAsync());
+            }
+            else
+            {
+                var iSAD251_PWaughContext = _context.Appointment.Include(a => a.User).Where(a => a.UserId == id).OrderBy(a => a.ApptDate);
+
+                return View(await iSAD251_PWaughContext.ToListAsync());
+            }       
+
           
         }
 

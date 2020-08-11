@@ -21,8 +21,19 @@ namespace ISAD251_WebApp.Controllers
         // GET: Deadlines
         public async Task<IActionResult> Index(int id, bool is_parent)
         {
-            var iSAD251_PWaughContext = _context.Deadline.Include(d => d.User).Where(a => a.UserId == id).OrderBy(a => a.DeadlineDate); ;
-            return View(await iSAD251_PWaughContext.ToListAsync());
+            if (is_parent == true)
+            {
+                var iSAD251_PWaughContext = _context.Deadline.Include(d => d.User).OrderBy(a => a.DeadlineDate); ;
+                return View(await iSAD251_PWaughContext.ToListAsync());
+            }
+            else
+            {
+                var iSAD251_PWaughContext = _context.Deadline.Include(d => d.User).Where(a => a.UserId == id).OrderBy(a => a.DeadlineDate); ;
+                return View(await iSAD251_PWaughContext.ToListAsync());
+            }
+
+
+
         }
 
         // GET: Deadlines/Details/5

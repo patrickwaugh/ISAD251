@@ -41,23 +41,23 @@
     <a class="w3-button w3-block w3-blue" style="font-size:15px"> Deadlines</a>
 </div>
 
-<h1>Index</h1>
 
 <p>
     <a style="padding-left:160px" asp-action="Create">Create New</a>
 </p>
 
     
-<body>
+<body style="padding-top:120px">
     <div style="float:right">
         <label for="user_select">Current user:</label>
 
-        <select name="user_select" id="user_select" onclick="">
-            <option value="1">Parent</option>
-            <option value="2">Child 1</option>
-            <option value="3">Child 2</option>
-            <option value="4">Child 3</option>
-        </select>
+        <div id="user_select">
+            <a href="@Url.Action("Index", "Deadlines" , new { id = 1, is_parent = true })" value="1">Parent</a>
+            <a href="@Url.Action("Index", "Deadlines" , new { id = 2, is_parent = false })" value="2">Child 1</a>
+            <a href="@Url.Action("Index", "Deadlines" , new { id = 3, is_parent = false })" value="3">Child 2</a>
+            <a href="@Url.Action("Index", "Deadlines" , new { id = 4, is_parent = false })" value="4">Child 3</a>
+        </div>
+
     </div>
 
     <table class="table" style="padding-left:160px">
@@ -68,7 +68,7 @@
                     Title
                 </th>
                 <th>
-                    Date
+                    Date 
                 </th>
                 <th>
                     Completed?

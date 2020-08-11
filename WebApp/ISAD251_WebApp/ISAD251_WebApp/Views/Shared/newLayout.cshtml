@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    <h1 style="text-align:center">Time-Keeper</h1>
+    <h1 class="w3-top" style="text-align:center">Time-Keeper</h1>
     <!-- links sit here-->
     <div class=" w3-top" style="top:70px">
         <div class="w3-row w3-padding w3-blue">
@@ -40,7 +40,7 @@
             <div class="w3-col s1">
                 <a class="w3-button w3-blue" asp-area="" asp-controller="Calender" asp-action="Calender"><span class="w3-text-white">View Calender</span></a>
             </div>
-           
+
         </div>
     </div>
 
@@ -52,6 +52,8 @@
     <script src="~/js/popper.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/js/main.js"></script>
+
+    @RenderSection("Scripts", required: false)
 
 
 </body>
