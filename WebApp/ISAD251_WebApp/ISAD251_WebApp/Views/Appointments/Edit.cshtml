@@ -14,32 +14,32 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ApptId" />
             <div class="form-group">
-                <label asp-for="ApptTitle" class="control-label"></label>
+                <label class="control-label">Title</label>
                 <input asp-for="ApptTitle" class="form-control" />
                 <span asp-validation-for="ApptTitle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ApptDate" class="control-label"></label>
+                <label class="control-label">Date</label>
                 <input asp-for="ApptDate" class="form-control" />
                 <span asp-validation-for="ApptDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ApptLocation" class="control-label"></label>
+                <label class="control-label">Location</label>
                 <input asp-for="ApptLocation" class="form-control" />
                 <span asp-validation-for="ApptLocation" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ApptDuration" class="control-label"></label>
+                <label class="control-label">Duration</label>
                 <input asp-for="ApptDuration" class="form-control" />
                 <span asp-validation-for="ApptDuration" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ApptNotes" class="control-label"></label>
+                <label class="control-label">Notes</label>
                 <input asp-for="ApptNotes" class="form-control" />
                 <span asp-validation-for="ApptNotes" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
+                <label class="control-label">User</label>
                 <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
