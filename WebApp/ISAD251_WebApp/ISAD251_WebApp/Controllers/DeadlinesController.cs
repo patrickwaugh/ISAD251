@@ -18,25 +18,26 @@ namespace ISAD251_WebApp.Controllers
             _context = context;
         }
 
-        // GET: Deadlines
+        // Function to retrieve a user's deadline records
         public async Task<IActionResult> Index(int id, bool is_parent)
         {
+            // If the user is a parent user then they have access to the records of any user
             if (is_parent == true)
             {
-                var iSAD251_PWaughContext = _context.Deadline.Include(d => d.User).OrderBy(a => a.DeadlineDate); ;
+                var iSAD251_PWaughContext = _context.Deadline.Include(d => d.User).OrderBy(a => a.DeadlineDate); 
+
                 return View(await iSAD251_PWaughContext.ToListAsync());
             }
+            // If the user is a child they can only access their own records
             else
             {
-                var iSAD251_PWaughContext = _context.Deadline.Include(d => d.User).Where(a => a.UserId == id).OrderBy(a => a.DeadlineDate); ;
+                var iSAD251_PWaughContext = _context.Deadline.Include(d => d.User).Where(a => a.UserId == id).OrderBy(a => a.DeadlineDate); 
+
                 return View(await iSAD251_PWaughContext.ToListAsync());
             }
-
-
-
         }
 
-        // GET: Deadlines/Details/5
+        // Function to return the details of a selected record
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -55,16 +56,13 @@ namespace ISAD251_WebApp.Controllers
             return View(deadline);
         }
 
-        // GET: Deadlines/Create
+        // Functions to create a new deadline record for the current user
         public IActionResult Create()
         {
             ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserName");
             return View();
         }
 
-        // POST: Deadlines/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DeadlineId,DeadlineTitle,DeadlineDate,DeadlineNotes,IsCompleted,UserId")] Deadline deadline)
@@ -79,7 +77,7 @@ namespace ISAD251_WebApp.Controllers
             return View(deadline);
         }
 
-        // GET: Deadlines/Edit/5
+        // Functions to edit a specified record
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,9 +94,7 @@ namespace ISAD251_WebApp.Controllers
             return View(deadline);
         }
 
-        // POST: Deadlines/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("DeadlineId,DeadlineTitle,DeadlineDate,DeadlineNotes,IsCompleted,UserId")] Deadline deadline)
@@ -132,7 +128,7 @@ namespace ISAD251_WebApp.Controllers
             return View(deadline);
         }
 
-        // GET: Deadlines/Delete/5
+        // Functions to delete a specified record
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -151,7 +147,6 @@ namespace ISAD251_WebApp.Controllers
             return View(deadline);
         }
 
-        // POST: Deadlines/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -320,7 +320,6 @@ C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISA
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
-C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Users\Create.cshtml.g.cs
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Users\Delete.cshtml.g.cs
@@ -339,7 +338,6 @@ C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISA
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\ISAD251_WebApp.pdb
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\ISAD251_WebApp.genruntimeconfig.cache
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\newLayout.cshtml.g.cs
-C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Calender\Calender.cshtml.g.cs
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
@@ -349,3 +347,5 @@ C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISA
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\ISAD251_WebApp.csproj.CoreCompileInputs.cache
 C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\ISAD251_WebApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\ISAD251_WebApp.csprojAssemblyReference.cache
+C:\Users\patrick\Documents\Referrals 2020\ISAD251\Application\ISAD251\WebApp\ISAD251_WebApp\ISAD251_WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Index.cshtml.g.cs

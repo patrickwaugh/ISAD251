@@ -18,13 +18,13 @@ namespace ISAD251_WebApp.Controllers
             _context = context;
         }
 
-        // GET: Users
+        // Function to retrieve the list of users
         public async Task<IActionResult> Index()
         {
             return View(await _context.User.ToListAsync());
         }
 
-        // GET: Users/Details/5
+        // Function to retrieve the details of a specific user
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,16 +42,12 @@ namespace ISAD251_WebApp.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
+        // Functions to create a new user record
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserId,UserName,IsParent")] User user)
         {
@@ -64,7 +60,7 @@ namespace ISAD251_WebApp.Controllers
             return View(user);
         }
 
-        // GET: Users/Edit/5
+        // Functions that handles editing specific user records
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,9 +76,6 @@ namespace ISAD251_WebApp.Controllers
             return View(user);
         }
 
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,IsParent")] User user)
@@ -115,7 +108,7 @@ namespace ISAD251_WebApp.Controllers
             return View(user);
         }
 
-        // GET: Users/Delete/5
+        // Functions that handles the deletion of any user records
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +126,6 @@ namespace ISAD251_WebApp.Controllers
             return View(user);
         }
 
-        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

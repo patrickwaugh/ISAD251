@@ -9,16 +9,16 @@ using ISAD251_WebApp.Models;
 
 namespace ISAD251_WebApp.Controllers
 {
-    public class CalenderController : Controller
+    public class DashboardController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
-        public CalenderController(ILogger<HomeController> logger)
+        public DashboardController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
             
-        public IActionResult Calender()
+        public IActionResult Index()
         {
             return View();
         }

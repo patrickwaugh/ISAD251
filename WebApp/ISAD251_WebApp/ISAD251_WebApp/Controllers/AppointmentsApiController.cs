@@ -20,14 +20,14 @@ namespace ISAD251_WebApp.Controllers
             _context = context;
         }
 
-        // GET: api/AppointmentsApi
+        // Handles API calls that request all appointment records
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointment()
         {
             return await _context.Appointment.ToListAsync();
         }
 
-        // GET: api/AppointmentsApi/5
+        // Handles API calls that request a specific appointment record
         [HttpGet("{id}")]
         public async Task<ActionResult<Appointment>> GetAppointment(int id)
         {
@@ -41,9 +41,7 @@ namespace ISAD251_WebApp.Controllers
             return appointment;
         }
 
-        // PUT: api/AppointmentsApi/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // Handles API calls that edit a specific appointment record
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAppointment(int id, Appointment appointment)
         {
@@ -73,9 +71,7 @@ namespace ISAD251_WebApp.Controllers
             return NoContent();
         }
 
-        // POST: api/AppointmentsApi
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // Handles API calls that request to create a new appointment record
         [HttpPost]
         public async Task<ActionResult<Appointment>> PostAppointment(Appointment appointment)
         {
@@ -85,7 +81,7 @@ namespace ISAD251_WebApp.Controllers
             return CreatedAtAction("GetAppointment", new { id = appointment.ApptId }, appointment);
         }
 
-        // DELETE: api/AppointmentsApi/5
+        // Handles API calls to delete a specific record
         [HttpDelete("{id}")]
         public async Task<ActionResult<Appointment>> DeleteAppointment(int id)
         {

@@ -12,7 +12,6 @@ namespace ISAD251_WebApp.Models
 {
     public partial class Appointment
     {
-        private ISAD251_PWaughContext db = new ISAD251_PWaughContext();
 
         public int ApptId { get; set; }
         public string ApptTitle { get; set; }

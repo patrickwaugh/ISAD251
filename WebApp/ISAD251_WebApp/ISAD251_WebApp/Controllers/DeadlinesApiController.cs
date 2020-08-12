@@ -20,14 +20,14 @@ namespace ISAD251_WebApp.Controllers
             _context = context;
         }
 
-        // GET: api/DeadlinesApi
+        // Handles API calls that request all deadline records
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Deadline>>> GetDeadline()
         {
             return await _context.Deadline.ToListAsync();
         }
 
-        // GET: api/DeadlinesApi/5
+        // Handles API calls that request a specific deadline record
         [HttpGet("{id}")]
         public async Task<ActionResult<Deadline>> GetDeadline(int id)
         {
@@ -41,9 +41,7 @@ namespace ISAD251_WebApp.Controllers
             return deadline;
         }
 
-        // PUT: api/DeadlinesApi/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // Handles API calls that edit a specific deadline record
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDeadline(int id, Deadline deadline)
         {
@@ -73,9 +71,7 @@ namespace ISAD251_WebApp.Controllers
             return NoContent();
         }
 
-        // POST: api/DeadlinesApi
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // Handles API calls that request to create a new deadline record
         [HttpPost]
         public async Task<ActionResult<Deadline>> PostDeadline(Deadline deadline)
         {
@@ -85,7 +81,7 @@ namespace ISAD251_WebApp.Controllers
             return CreatedAtAction("GetDeadline", new { id = deadline.DeadlineId }, deadline);
         }
 
-        // DELETE: api/DeadlinesApi/5
+        // Handles API calls to delete a specific record
         [HttpDelete("{id}")]
         public async Task<ActionResult<Deadline>> DeleteDeadline(int id)
         {

@@ -18,27 +18,27 @@ namespace ISAD251_WebApp.Controllers
             _context = context;
         }
 
-       
-        // GET: Appointments
+
+        // Function to retrieve a user's appointment records
         public async Task<IActionResult> Index(int id, bool is_parent)
         {
+            // If the user is a parent user then they have access to the records of any user
             if (is_parent == true)
             {
                 var iSAD251_PWaughContext = _context.Appointment.Include(a => a.User).OrderBy(a => a.ApptDate);
 
                 return View(await iSAD251_PWaughContext.ToListAsync());
             }
+            // If the user is a child they can only access their own records
             else
             {
                 var iSAD251_PWaughContext = _context.Appointment.Include(a => a.User).Where(a => a.UserId == id).OrderBy(a => a.ApptDate);
 
                 return View(await iSAD251_PWaughContext.ToListAsync());
             }       
-
-          
         }
 
-        // GET: Appointments/Details/5
+        // Function to return the details of a selected record
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -57,16 +57,13 @@ namespace ISAD251_WebApp.Controllers
             return View(appointment);
         }
 
-        // GET: Appointments/Create
+        // Functions to create a new appointment record for the current user
         public IActionResult Create()
         {
             ViewData["UserId"] = new SelectList(_context.User, "UserId", "UserName");
             return View();
         }
 
-        // POST: Appointments/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ApptId,ApptTitle,ApptDate,ApptLocation,ApptDuration,ApptNotes,UserId")] Appointment appointment)
@@ -81,7 +78,7 @@ namespace ISAD251_WebApp.Controllers
             return View(appointment);
         }
 
-        // GET: Appointments/Edit/5
+        // Functions to edit a specified record
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -98,9 +95,7 @@ namespace ISAD251_WebApp.Controllers
             return View(appointment);
         }
 
-        // POST: Appointments/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ApptId,ApptTitle,ApptDate,ApptLocation,ApptDuration,ApptNotes,UserId")] Appointment appointment)
@@ -134,7 +129,7 @@ namespace ISAD251_WebApp.Controllers
             return View(appointment);
         }
 
-        // GET: Appointments/Delete/5
+        // Functions to delete a specified record
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -153,7 +148,6 @@ namespace ISAD251_WebApp.Controllers
             return View(appointment);
         }
 
-        // POST: Appointments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
